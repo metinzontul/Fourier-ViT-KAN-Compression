@@ -33,7 +33,8 @@ Fourier-ViT-KAN-Compression/
 ├── ablation_scripts/                       # End-to-end ablation pipelines
 │   ├── isic2019_vit_bct_kan_ablation.py    # Evaluates KAN diagnostic collapse on skin lesions
 │   ├── isic2019_vit_bct_mlp_ablation.py    # Demonstrates MLP clinical resilience
-│   ├── resnet50_comprehensive_ablation.py  # Multi-dataset hardware benchmark (MNIST, EuroSAT, CIFAR-10)
+│   ├── resnet50_comprehensive_ablation.py  # ResNet50 ablation study (MNIST, EuroSAT)
+│   ├── vit_comprehensive_ablation.py       # ViT ablation study (CIFAR-10, MNIST, EuroSAT)
 │   └── SHAP_analysis_isic2019.py           # Generates pixel-level attribution maps (Figure 8)
 ├── visualization/                          # Publication-ready figure generators
 │   ├── generate_figure5_isic_dichotomy.py  # Figure 5: F1 drop vs. parameter compression
@@ -60,7 +61,7 @@ Clone this repository and configure the isolated Anaconda environment:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YourUsername/Fourier-ViT-KAN-Compression.git
+git clone [https://github.com/YourUsername/Fourier-ViT-KAN-Compression.git](https://github.com/YourUsername/Fourier-ViT-KAN-Compression.git)
 cd Fourier-ViT-KAN-Compression
 
 # Create and activate the conda environment
@@ -112,8 +113,12 @@ python ablation_scripts/SHAP_analysis_isic2019.py
 ### 2. Running Comprehensive Ablation Studies
 To execute complete 5-seed, 20-epoch training and validation pipelines:
 ```bash
-# Run multi-dataset ResNet50 benchmark (MNIST, EuroSAT, CIFAR-10)
+# Run multi-dataset ResNet50 benchmark (MNIST, EuroSAT)
 python ablation_scripts/resnet50_comprehensive_ablation.py
+
+# Run multi-dataset ViT benchmark (Targeting specific datasets like CIFAR-10, MNIST, EuroSAT)
+python ablation_scripts/vit_comprehensive_ablation.py --dataset CIFAR-10
+python ablation_scripts/vit_comprehensive_ablation.py --dataset EuroSAT
 
 # Run medical ViT ablation benchmark on ISIC 2019
 python ablation_scripts/isic2019_vit_bct_kan_ablation.py
