@@ -1,0 +1,26 @@
+# Core Deep Learning Framework (PyTorch with CUDA 12.1 support)
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1
+
+# Scientific Computing & Matrix Operations
+numpy>=1.24.0,<2.0.0
+scipy>=1.11.0
+
+# Computer Vision & Image Processing
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# Explainable AI (XAI)
+shap==0.48.0
+
+# Machine Learning Metrics & Preprocessing
+scikit-learn>=1.3.0
+
+# Visualization & Plotting
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Utility & Progress Tracking
+tqdm>=4.66.0
+requests>=2.31.0
