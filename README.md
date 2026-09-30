@@ -1,4 +1,4 @@
-# Hardware Efficiency vs. Topological Vulnerability: Evaluating Kolmogorov-Arnold Networks under Extreme Fourier-Domain Truncation
+# Structured Feature Compression in Vision Models: Comparing KAN, MLP, and Linear Classifier Heads
 
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
 [![PyTorch 2.5.1](https://img.shields.io/badge/PyTorch-2.5.1-EE4C2C.svg)](https://pytorch.org/)
@@ -6,17 +6,17 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Official PyTorch implementation for the manuscript:  
-**"Hardware Efficiency vs. Topological Vulnerability: Evaluating Kolmogorov-Arnold Networks under Extreme Fourier-Domain Truncation"** (Submitted to *MDPI Electronics*).
+**"Structured Feature Compression in Vision Models: Comparing KAN, MLP, and Linear Classifier Heads"** (Submitted to *MDPI Electronics*).
 
 ---
 
 ## 📌 Abstract
-This repository evaluates the architectural resilience of **Kolmogorov-Arnold Networks (KANs)** compared to standard **Multi-Layer Perceptrons (MLPs)** under aggressive frequency-domain compression. We introduce the **Banded Compression Transform (BCT)** module, which truncates peripheral high-frequency spatial components and projects features via trainable complex weights in the Fourier domain.
+This repository evaluates the architectural resilience of **Kolmogorov-Arnold Networks (KANs)** compared to standard **Multi-Layer Perceptrons (MLPs)** and **Linear** classifiers under structured dimensional reduction. We introduce the **Banded Compression Transform (BCT)**, which operates as a block-circulant transition for standard ResNet50 and ViT benchmarks, and as a learned one-dimensional latent spectral bottleneck for medical imaging tasks.
 
 Key findings include:
-- **Macroscopic Vision Tasks (CIFAR-10, MNIST, EuroSAT):** BCT achieves over 93% head parameter reduction (e.g., from 184,320 to 11,904 in ResNet50+KAN) and slashes inference latency by nearly 46% with negligible F1 score degradation.
-- **Sensitive Medical Diagnostics (ISIC 2019):** BCT triggers a catastrophic **Diagnostic Collapse** in ViT+KAN architectures (Macro F1 plummets from 78.93% to 70.06%, $p < 0.001$), systematically hallucinating malignancy. In stark contrast, globally-oriented ViT+MLPs remain clinically resilient under identical truncation (F1 drops by only 0.28%, $p = 0.727$).
-- **Pixel-Level Attribution:** Gradient-based SHAP explainability confirms that KAN's B-Spline grids critically anchor to high-frequency micro-textures, which are eliminated during extreme Fourier-domain truncation.
+- **Macroscopic Vision Tasks (CIFAR-10, MNIST, EuroSAT):** The block-circulant implementation achieves massive classifier-module parameter reduction (e.g., 93.5% reduction from 184,320 to 11,904 in ResNet50+KAN on CIFAR-10) with minimal Macro F1 degradation (0.33 percentage points).
+- **Sensitive Medical Diagnostics (ISIC 2019):** A 768-to-128 latent spectral bottleneck triggers a significant validation Macro F1 drop for ViT+KAN (from 78.93% to 70.06%, $p < 0.001$). In contrast, a globally-oriented ViT+Linear configuration remains clinically resilient under identical truncation (F1 drops by only 0.28%, $p = 0.727$).
+- **Exploratory Attribution:** Dual confusion matrices and gradient-based SHAP explainability analyses provide visual insights into the varying sensitivities of these classifier topologies to compressed latent spaces.
 
 ---
 
@@ -25,22 +25,23 @@ Key findings include:
 ```text
 Fourier-ViT-KAN-Compression/
 ├── models/
-│   ├── bct_module.py                       # BCT spectral pooling and Fourier projection layers
+│   ├── bct_module.py                       # BCT spectral pooling and block-circulant layers
 │   ├── kan_layer.py                        # Minimal KAN layer utilizing B-Spline parameterization
 │   ├── vit_kan.py                          # Baseline ViT+KAN and proposed ViT+BCT+KAN models
-│   ├── vit_mlp.py                          # Baseline ViT+MLP and proposed ViT+BCT+MLP models
+│   ├── vit_linear.py                       # Baseline ViT+Linear and proposed ViT+BCT+Linear models
 │   └── resnet_kan.py                       # ResNet50+KAN and ResNet50+BCT+KAN implementations
 ├── ablation_scripts/                       # End-to-end ablation pipelines
 │   ├── isic2019_vit_bct_kan_ablation.py    # Evaluates KAN diagnostic collapse on skin lesions
-│   ├── isic2019_vit_bct_mlp_ablation.py    # Demonstrates MLP clinical resilience
-│   ├── resnet50_comprehensive_ablation.py  # ResNet50 ablation study (MNIST, EuroSAT)
+│   ├── isic2019_vit_bct_linear_ablation.py # Demonstrates Linear head clinical resilience
+│   ├── resnet50_comprehensive_ablation.py  # ResNet50 ablation study (MNIST, EuroSAT, CIFAR-10)
 │   ├── vit_comprehensive_ablation.py       # ViT ablation study (CIFAR-10, MNIST, EuroSAT)
-│   └── SHAP_analysis_isic2019.py           # Generates pixel-level attribution maps (Figure 8)
+│   └── SHAP_analysis_isic2019.py           # Generates pixel-level attribution maps (Figure 11)
 ├── visualization/                          # Publication-ready figure generators
-│   ├── generate_figure5_isic_dichotomy.py  # Figure 5: F1 drop vs. parameter compression
-│   ├── generate_figure6_isic2019_learning_curve.py # Figure 6: Training dynamics over 20 epochs
-│   ├── generate_figure7_isic_confusion_matrix.py   # Figure 7: Dual confusion matrix comparison
-│   └── plot_PSD.py                         # Figure 1: Power Spectral Density (PSD) analysis
+│   ├── plot_PSD.py                         # Figure 1: Power Spectral Density (PSD) analysis
+│   ├── generate_figure4_cifar10.py         # Figure 4: CIFAR-10 F1 and Parameter Compression
+│   ├── generate_figure8_isic_dichotomy.py  # Figure 8: ISIC 2019 F1 drop vs. parameter compression
+│   ├── generate_figure9_isic_learning.py   # Figure 9: ISIC 2019 Training dynamics over 20 epochs
+│   └── generate_figure10_isic_cm.py        # Figure 10: ISIC 2019 Dual confusion matrix comparison
 ├── weights/                                # Pre-trained model weight management
 │   ├── download_weights.sh                 # Bash script to fetch v1.0.0 weights via wget
 │   └── README.md                           # Hosting & manual download instructions
@@ -97,16 +98,19 @@ To replicate the figures from the manuscript using pre-trained weights:
 # Figure 1: Power Spectral Density (PSD) analysis across datasets
 python visualization/plot_PSD.py
 
-# Figure 5: Diagnostic Resilience Dichotomy (Macro F1 vs. Hardware)
-python visualization/generate_figure5_isic_dichotomy.py
+# Figure 4: CIFAR-10 Performance and Parameter Compression
+python visualization/generate_figure4_cifar10.py
 
-# Figure 6: Training loss and validation accuracy learning curves
-python visualization/generate_figure6_isic2019_learning_curve.py
+# Figure 8: Diagnostic Resilience Dichotomy (Macro F1 vs. Hardware)
+python visualization/generate_figure8_isic_dichotomy.py
 
-# Figure 7: Class-wise Confusion Matrices (Diagnosing Malignancy Hallucination)
-python visualization/generate_figure7_isic_confusion_matrix.py
+# Figure 9: Training loss and validation accuracy learning curves
+python visualization/generate_figure9_isic_learning.py
 
-# Figure 8: Gradient-based SHAP Feature Attribution Maps
+# Figure 10: Class-wise Confusion Matrices (Diagnosing Malignancy Hallucination)
+python visualization/generate_figure10_isic_cm.py
+
+# Figure 11: Gradient-based SHAP Feature Attribution Maps
 python ablation_scripts/SHAP_analysis_isic2019.py
 ```
 
@@ -122,7 +126,7 @@ python ablation_scripts/vit_comprehensive_ablation.py --dataset EuroSAT
 
 # Run medical ViT ablation benchmark on ISIC 2019
 python ablation_scripts/isic2019_vit_bct_kan_ablation.py
-python ablation_scripts/isic2019_vit_bct_mlp_ablation.py
+python ablation_scripts/isic2019_vit_bct_linear_ablation.py
 ```
 
 ---
@@ -138,8 +142,8 @@ The primary experiments were executed across an exploratory codebase during mode
 If you use this repository or find our BCT Fourier-compression framework useful in your research, please cite our article:
 
 ```bibtex
-@article{zontul2026hardware,
-  title={Hardware Efficiency vs. Topological Vulnerability: Evaluating Kolmogorov-Arnold Networks under Extreme Fourier-Domain Truncation},
+@article{zontul2026structured,
+  title={Structured Feature Compression in Vision Models: Comparing KAN, MLP, and Linear Classifier Heads},
   author={Zontul, Metin},
   journal={Electronics},
   year={2026},
