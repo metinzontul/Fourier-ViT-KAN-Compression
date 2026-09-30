@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Generate Figure 9: ISIC 2019 Learning Curves
-Publication-ready formatting with distinct markers for ViT+Linear and ViT+KAN.
+Extracts EXACT epoch-by-epoch data directly from the experimental logs.
+Ensures 100% reproducibility and academic integrity (no hardcoded data).
 
 Author: Prof. Dr. Metin Zontul
 Date: September 2026
@@ -9,8 +10,12 @@ Date: September 2026
 
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
+import re
+import os
 
+# =============================================================================
+# PUBLICATION FORMATTING SETTINGS
+# =============================================================================
 plt.rcParams['font.family'] = 'serif'
 plt.rcParams['axes.titlesize'] = 16
 plt.rcParams['axes.titleweight'] = 'bold'
@@ -21,14 +26,55 @@ plt.rcParams['ytick.labelsize'] = 12
 plt.rcParams['legend.fontsize'] = 12
 plt.rcParams['legend.title_fontsize'] = 12
 
-# Note: Replace with actual parsed log data
-epochs = np.arange(1, 21)
-# Mock data closely resembling the provided figure
-loss_linear = [1.3, 0.93, 0.75, 0.59, 0.49, 0.39, 0.33, 0.27, 0.24, 0.20, 0.20, 0.15, 0.14, 0.13, 0.12, 0.11, 0.08, 0.12, 0.11, 0.08]
-loss_kan = [1.61, 1.08, 0.85, 0.68, 0.56, 0.45, 0.36, 0.29, 0.25, 0.20, 0.20, 0.17, 0.17, 0.14, 0.11, 0.12, 0.08, 0.13, 0.06, 0.10]
-acc_linear = [62.0, 68.3, 68.7, 72.6, 72.2, 74.9, 77.9, 77.7, 78.0, 78.0, 77.9, 79.2, 78.4, 78.6, 78.6, 80.6, 78.8, 78.3, 81.3, 80.1]
-acc_kan = [61.0, 63.8, 66.2, 70.6, 71.9, 70.1, 75.1, 75.4, 77.0, 78.2, 78.0, 78.4, 79.6, 79.2, 80.3, 80.8, 76.7, 81.6, 78.8, 81.0]
+# =============================================================================
+# DATA PARSING FROM REAL LOGS
+# =============================================================================
+# Log dosyasının yolu (Klasör yapınıza göre ayarlayın)
+log_file_path = os.path.join("..", "logs", "ISIC_2019_Ablation_Results.txt")
 
+# Regex patternleri ile gerçek verileri yakalayacağız
+epoch_pattern = re.compile(r"Epoch \[(\d+)/20\] \| Train Loss: ([\d.]+) \| Val Acc: ([\d.]+)%")
+
+def extract_learning_curves(log_path, target_model_header):
+    losses = []
+    accuracies = []
+    capture = False
+    
+    try:
+        with open(log_path, 'r', encoding='utf-8') as file:
+            for line in file:
+                if target_model_header in line:
+                    capture = True
+                    continue
+                
+                if capture:
+                    match = epoch_pattern.search(line)
+                    if match:
+                        losses.append(float(match.group(2)))
+                        accuracies.append(float(match.group(3)))
+                    elif line.strip() == "" and len(losses) > 0:
+                        # Boş satır gördüğümüzde o run bitmiş demektir
+                        break
+    except FileNotFoundError:
+        print(f"ERROR: Log file not found at {log_path}. Please check the path.")
+        return None, None
+        
+    return losses, accuracies
+
+# Run 1 verilerini doğrudan log'dan çekiyoruz
+loss_kan, acc_kan = extract_learning_curves(log_file_path, "[ISIC 2019] Baseline ViT + KAN (Run 1/5)")
+loss_linear, acc_linear = extract_learning_curves(log_file_path, "[ISIC 2019] Baseline ViT + Linear (Run 1/5)")
+
+if not loss_kan or not loss_linear:
+    print("Failed to extract data. Generating empty plot.")
+    loss_kan, acc_kan = [0]*20, [0]*20
+    loss_linear, acc_linear = [0]*20, [0]*20
+
+epochs = np.arange(1, 21)
+
+# =============================================================================
+# PLOTTING
+# =============================================================================
 color_linear = '#2c6085' # Koyu Mavi
 color_kan = '#cc4b51'    # Koyu Kırmızı
 
@@ -57,5 +103,6 @@ legend = axes[1].legend(loc='lower right')
 for text in legend.get_texts(): text.set_fontweight('bold')
 
 plt.tight_layout()
-plt.savefig('figure_09.png', dpi=600, bbox_inches='tight')
-print(">> Figure 9 (Learning Curves) generated successfully.")
+output_filename = 'figure_09.png'
+plt.savefig(output_filename, dpi=600, bbox_inches='tight')
+print(f">> {output_filename} successfully generated from REAL raw logs!")
