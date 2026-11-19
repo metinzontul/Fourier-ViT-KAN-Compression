@@ -1,10 +1,12 @@
 # Performance–Compression Trade-offs in Vision Classifier Heads
 
+[![DOI](https://zenodo.org/badge/1369739725.svg)](https://doi.org/10.5281/zenodo.24380520)
+
 Code, data partitions, logs and results for the article
 
 > M. Zontul, **"Performance–Compression Trade-offs in Vision Classifier Heads: A Controlled Comparison of KAN, MLP, and Linear Configurations"**, *Applied Sciences* (MDPI), manuscript applsci-4699732 (revised version).
 
-This is **release v2.0**, the version that accompanies the revised manuscript. The scripts and logs of the original submission are kept unchanged in [`archive/v1_original/`](archive/v1_original/); [`archive/v1_original/NOTES.md`](archive/v1_original/NOTES.md) lists the errors found in them and how the revision handles each one. The state of the repository at the time of the first review is preserved by the tags `v1.0.0` and `v1.1-reviewed`.
+This is **release v2.0**, the version that accompanies the revised manuscript. It is archived at Zenodo: [10.5281/zenodo.24380521](https://doi.org/10.5281/zenodo.24380521) (this version); [10.5281/zenodo.24380520](https://doi.org/10.5281/zenodo.24380520) always resolves to the latest version. The scripts and logs of the original submission are kept unchanged in [`archive/v1_original/`](archive/v1_original/); [`archive/v1_original/NOTES.md`](archive/v1_original/NOTES.md) lists the errors found in them and how the revision handles each one. The state of the repository at the time of the first review is preserved by the tags `v1.0.0` and `v1.1-reviewed`.
 
 ## What the study does
 
@@ -146,7 +148,7 @@ Please cite the article once it is published. Until then:
 @unpublished{zontul2026heads,
   author = {Metin Zontul},
   title  = {Performance--Compression Trade-offs in Vision Classifier Heads: A Controlled Comparison of {KAN}, {MLP}, and Linear Configurations},
-  note   = {Manuscript applsci-4699732, Applied Sciences (MDPI), under review},
+  note   = {Manuscript applsci-4699732, Applied Sciences (MDPI), under review. Code: \url{https://doi.org/10.5281/zenodo.24380521}},
   year   = {2026}
 }
 ```
