@@ -1,0 +1,8 @@
+hypothesis,cells,cells_favouring,sign_test_p,sig_after_holm
+H1: spectral BCT is not better than random projection (d=128),32,BCT better in 6/32,0.0005350527353584766,"14 worse, 1 better"
+H2b: BCT is equivalent with permuted channel order (margin 0.5),32,|diff| < 0.5 in 23/32,,equivalent in 1
+H3: KAN loses more than Linear under lossy reduction (frozen),32,KAN loses more in 25/32,0.0021024015732109547,"13 KAN-worse, 2 KAN-better"
+H4: LayerNorm helps the KAN under bct,8,KAN+LN better in 8/8,0.0078125,"5 better, 0 worse"
+H4: LayerNorm helps the KAN under blockcirc,8,KAN+LN better in 7/8,0.0703125,"0 better, 0 worse"
+H4: LayerNorm helps the KAN under pca,8,KAN+LN better in 7/8,0.0703125,"4 better, 1 worse"
+H4: LayerNorm helps the KAN under random,8,KAN+LN better in 0/8,0.0078125,"0 better, 2 worse"

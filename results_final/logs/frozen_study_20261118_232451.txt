@@ -1,0 +1,40 @@
+$ python frozen_study.py --datasets MNIST CIFAR10 EuroSAT --backbones vit_b_16 --reducers none --heads kan_orig mlp_orig --lrs 1e-3 --batch_size 64
+>> console log: C:\Users\ASUS-WORKSTATION\Desktop\metin\Hasan\src\revision\results_final\logs\frozen_study_20261118_232451.txt
+>> device=cuda out=C:\Users\ASUS-WORKSTATION\Desktop\metin\Hasan\src\revision\results_final\frozen_results.csv finished runs on disk: 5440
+   MNIST    vit_b_16 none      d=768  kan_orig lr=1e-03 s=0 tune  valF1=97.40 testF1=96.91 params=38,400 grid=0.99 13.0s
+   MNIST    vit_b_16 none      d=768  kan_orig lr=1e-03 s=0 final valF1=97.40 testF1=96.91 params=38,400 grid=0.99 13.8s
+   MNIST    vit_b_16 none      d=768  kan_orig lr=1e-03 s=1 final valF1=97.21 testF1=97.13 params=38,400 grid=0.99 11.5s
+   MNIST    vit_b_16 none      d=768  kan_orig lr=1e-03 s=2 final valF1=97.37 testF1=97.12 params=38,400 grid=0.99 11.9s
+   MNIST    vit_b_16 none      d=768  kan_orig lr=1e-03 s=3 final valF1=97.34 testF1=96.99 params=38,400 grid=0.99 12.8s
+   MNIST    vit_b_16 none      d=768  kan_orig lr=1e-03 s=4 final valF1=97.14 testF1=96.95 params=38,400 grid=0.99 13.1s
+   MNIST    vit_b_16 none      d=768  mlp_orig lr=1e-03 s=0 tune  valF1=97.84 testF1=97.46 params=7,690 grid=0.99 11.4s
+   MNIST    vit_b_16 none      d=768  mlp_orig lr=1e-03 s=0 final valF1=97.84 testF1=97.46 params=7,690 grid=0.99 11.9s
+   MNIST    vit_b_16 none      d=768  mlp_orig lr=1e-03 s=1 final valF1=97.84 testF1=97.57 params=7,690 grid=0.99 10.9s
+   MNIST    vit_b_16 none      d=768  mlp_orig lr=1e-03 s=2 final valF1=97.82 testF1=97.62 params=7,690 grid=0.99 11.8s
+   MNIST    vit_b_16 none      d=768  mlp_orig lr=1e-03 s=3 final valF1=97.72 testF1=97.55 params=7,690 grid=0.99 12.0s
+   MNIST    vit_b_16 none      d=768  mlp_orig lr=1e-03 s=4 final valF1=97.91 testF1=97.57 params=7,690 grid=0.99 11.1s
+   CIFAR10  vit_b_16 none      d=768  kan_orig lr=1e-03 s=0 tune  valF1=93.60 testF1=92.69 params=38,400 grid=1.00 10.5s
+   CIFAR10  vit_b_16 none      d=768  kan_orig lr=1e-03 s=0 final valF1=93.60 testF1=92.69 params=38,400 grid=1.00 10.2s
+   CIFAR10  vit_b_16 none      d=768  kan_orig lr=1e-03 s=1 final valF1=93.55 testF1=93.40 params=38,400 grid=1.00 9.7s
+   CIFAR10  vit_b_16 none      d=768  kan_orig lr=1e-03 s=2 final valF1=93.40 testF1=93.09 params=38,400 grid=1.00 10.6s
+   CIFAR10  vit_b_16 none      d=768  kan_orig lr=1e-03 s=3 final valF1=94.01 testF1=93.42 params=38,400 grid=1.00 10.6s
+   CIFAR10  vit_b_16 none      d=768  kan_orig lr=1e-03 s=4 final valF1=93.95 testF1=93.22 params=38,400 grid=1.00 9.9s
+   CIFAR10  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=0 tune  valF1=95.59 testF1=95.05 params=7,690 grid=1.00 10.0s
+   CIFAR10  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=0 final valF1=95.59 testF1=95.05 params=7,690 grid=1.00 10.2s
+   CIFAR10  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=1 final valF1=95.49 testF1=95.18 params=7,690 grid=1.00 12.3s
+   CIFAR10  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=2 final valF1=95.64 testF1=95.04 params=7,690 grid=1.00 10.5s
+   CIFAR10  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=3 final valF1=95.60 testF1=95.20 params=7,690 grid=1.00 10.2s
+   CIFAR10  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=4 final valF1=95.60 testF1=95.17 params=7,690 grid=1.00 11.7s
+   EuroSAT  vit_b_16 none      d=768  kan_orig lr=1e-03 s=0 tune  valF1=92.32 testF1=92.65 params=38,400 grid=0.99 4.6s
+   EuroSAT  vit_b_16 none      d=768  kan_orig lr=1e-03 s=0 final valF1=92.32 testF1=92.65 params=38,400 grid=0.99 4.5s
+   EuroSAT  vit_b_16 none      d=768  kan_orig lr=1e-03 s=1 final valF1=92.99 testF1=92.86 params=38,400 grid=0.99 4.7s
+   EuroSAT  vit_b_16 none      d=768  kan_orig lr=1e-03 s=2 final valF1=93.37 testF1=92.75 params=38,400 grid=0.99 4.2s
+   EuroSAT  vit_b_16 none      d=768  kan_orig lr=1e-03 s=3 final valF1=92.83 testF1=92.35 params=38,400 grid=0.99 4.4s
+   EuroSAT  vit_b_16 none      d=768  kan_orig lr=1e-03 s=4 final valF1=93.52 testF1=92.31 params=38,400 grid=0.99 4.2s
+   EuroSAT  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=0 tune  valF1=95.44 testF1=95.47 params=7,690 grid=0.99 4.6s
+   EuroSAT  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=0 final valF1=95.44 testF1=95.47 params=7,690 grid=0.99 4.4s
+   EuroSAT  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=1 final valF1=95.60 testF1=95.60 params=7,690 grid=0.99 4.5s
+   EuroSAT  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=2 final valF1=95.64 testF1=95.54 params=7,690 grid=0.99 4.9s
+   EuroSAT  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=3 final valF1=95.56 testF1=95.46 params=7,690 grid=0.99 4.0s
+   EuroSAT  vit_b_16 none      d=768  mlp_orig lr=1e-03 s=4 final valF1=95.62 testF1=95.56 params=7,690 grid=0.99 5.2s
+>> done

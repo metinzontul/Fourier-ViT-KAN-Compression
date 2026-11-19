@@ -1,0 +1,5 @@
+metric,drop_kan,p_kan,g_kan,drop_linear,p_linear,g_linear,interaction,ci_lo,ci_hi,p_interaction
+selected,3.452,0.009,1.979,0.653,0.403,0.505,2.799,0.151,5.448,0.04
+last,6.015,0.008,2.684,0.691,0.642,0.277,5.324,1.104,9.543,0.018
+last5,4.963,0.001,3.103,0.034,0.963,0.027,4.928,2.445,7.411,0.001
+selected: bct_ln_kan - bct_kan,,,1.764,,,,2.958,0.742,5.174,0.015

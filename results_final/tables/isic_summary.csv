@@ -1,0 +1,6 @@
+config,n,selected,selected_sd,last,last5,grid,head_in_std
+vit_bct_kan,5,55.09,1.61,53.13,53.17,0.23,5.39
+vit_bct_linear,5,57.05,1.16,56.34,56.36,0.58,2.84
+vit_bct_ln_kan,5,58.05,1.41,57.33,56.27,0.98,1.0
+vit_kan,5,58.55,1.54,59.15,58.13,1.0,0.54
+vit_linear,5,57.7,1.17,57.03,56.39,1.0,0.72

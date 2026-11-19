@@ -1,0 +1,101 @@
+\documentclass[border=2pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{arrows.meta,calc,positioning}
+\definecolor{acc}{HTML}{2B6F8A}
+\definecolor{accl}{HTML}{E4EFF3}
+\definecolor{ora}{HTML}{C8562A}
+\definecolor{grd}{HTML}{555555}
+\definecolor{grl}{HTML}{E6E6E3}
+\input{phi_coords.tex}
+\begin{document}
+\footnotesize
+\begin{tikzpicture}[
+  neuron/.style={circle,draw=grd,line width=0.5pt,minimum size=6.4mm,inner sep=0pt,fill=white},
+  hid/.style={neuron,fill=accl,draw=acc},
+  sumn/.style={neuron,fill=accl,draw=acc},
+  edge/.style={line width=0.45pt,draw=grd!80},
+  lab/.style={font=\scriptsize,text=grd},
+  ttl/.style={font=\footnotesize\bfseries},
+]
+% ReLU glyph inside a node
+\newcommand{\relu}[1]{\draw[acc,line width=0.6pt] ($(#1)+(-0.17,-0.08)$) -- ($(#1)+(0,-0.08)$) -- ($(#1)+(0.15,0.1)$);}
+% spline glyph on an edge
+\newcommand{\phiglyph}[1]{%
+  \node[draw=ora,fill=white,rounded corners=1pt,minimum width=4.0mm,minimum height=2.6mm,inner sep=0pt] at (#1) {};
+  \draw[ora,line width=0.6pt] ($(#1)+(-0.16,-0.05)$) .. controls ($(#1)+(-0.07,0.11)$) and ($(#1)+(-0.02,-0.10)$) .. ($(#1)+(0.05,0.02)$) .. controls ($(#1)+(0.09,0.08)$) .. ($(#1)+(0.16,0.06)$);}
+
+% ======================= (a) MLP head =======================
+\begin{scope}[shift={(0,0)}]
+  \node[ttl,anchor=west] at (-0.55,2.55) {(a)};
+  \node[font=\footnotesize] at (1.6,2.55) {MLP head};
+  \foreach \n/\y/\t in {i1/1.6/x_1, i2/0.8/x_2, id/-0.8/x_d} \node[neuron] (\n) at (0,\y) {$\t$};
+  \node at (0,0.05) {$\vdots$};
+  \foreach \n/\y in {h1/1.9, h2/1.1, h3/0.3, hn/-1.1} \node[hid] (\n) at (1.6,\y) {};
+  \node at (1.6,-0.33) {$\vdots$};
+  \foreach \n/\y/\t in {o1/1.2/y_1, oc/-0.4/y_C} \node[neuron] (\n) at (3.2,\y) {$\t$};
+  \node at (3.2,0.5) {$\vdots$};
+  \begin{scope}[on background layer/.style={}]
+  \foreach \a in {i1,i2,id} \foreach \b in {h1,h2,h3,hn} \draw[edge] (\a) -- (\b);
+  \foreach \a in {h1,h2,h3,hn} \foreach \b in {o1,oc} \draw[edge] (\a) -- (\b);
+  \end{scope}
+  \foreach \n in {i1,i2,id} \node[neuron] at (\n) {};
+  \foreach \n/\t in {i1/x_1,i2/x_2,id/x_d} \node at (\n) {$\t$};
+  \foreach \n in {h1,h2,h3,hn} {\node[hid] at (\n) {}; \relu{\n}}
+  \foreach \n/\t in {o1/y_1,oc/y_C} {\node[neuron] at (\n) {$\t$};}
+  \node[lab] at (0.8,-1.65) {$W^{(1)}$};
+  \node[lab] at (2.4,-1.65) {$W^{(2)}$};
+  \node[lab,align=center] at (0,-2.25) {input\\[-1pt]$d$};
+  \node[lab,align=center] at (1.6,-2.25) {hidden, ReLU\\[-1pt]128};
+  \node[lab,align=center] at (3.2,-2.25) {output\\[-1pt]$C$};
+\end{scope}
+
+% ======================= (b) KAN head =======================
+\begin{scope}[shift={(4.75,0)}]
+  \node[ttl,anchor=west] at (-0.55,2.55) {(b)};
+  \node[font=\footnotesize] at (1.3,2.55) {B-spline KAN head};
+  \foreach \n/\y/\t in {i1/1.6/x_1, i2/0.8/x_2, id/-0.8/x_d} \node[neuron] (\n) at (0,\y) {$\t$};
+  \node at (0,0.05) {$\vdots$};
+  \foreach \n/\y in {o1/1.2, oc/-0.4} \node[sumn] (\n) at (2.6,\y) {$\Sigma$};
+  \node at (2.6,0.5) {$\vdots$};
+  \foreach \a in {i1,i2,id} \foreach \b in {o1,oc} \draw[edge] (\a) -- (\b);
+  \foreach \a/\b/\t in {i1/o1/0.4, i2/o1/0.4, i2/oc/0.4, id/oc/0.4, i1/oc/0.75, id/o1/0.75} {\phiglyph{$(\a)!\t!(\b)$}}
+  \foreach \n/\t in {i1/x_1,i2/x_2,id/x_d} \node[neuron] at (\n) {$\t$};
+  \foreach \n in {o1,oc} \node[sumn] at (\n) {$\Sigma$};
+  \draw[edge,-{Stealth[length=1.6mm]}] (o1.east) -- ++(0.45,0) node[right] {$y_1$};
+  \draw[edge,-{Stealth[length=1.6mm]}] (oc.east) -- ++(0.45,0) node[right] {$y_C$};
+  \node[lab] at (1.3,-1.65) {$\phi_{o,i}$ on every connection};
+  \node[lab,align=center] at (0,-2.25) {input\\[-1pt]$d$};
+  \node[lab,align=center] at (2.6,-2.25) {output\\[-1pt]$C$};
+\end{scope}
+
+% ======================= (c) edge function =======================
+\begin{scope}[shift={(9.1,-1.95)}]
+  \node[ttl,anchor=west] at (-0.55,4.5) {(c)};
+  \node[font=\footnotesize,anchor=west] at (-0.05,4.5) {one connection $\phi_{o,i}(x)$};
+  \begin{axis}[
+    width=5.0cm, height=4.35cm, scale only axis=false,
+    xmin=-4, xmax=4, ymin=-1.0, ymax=2.0,
+    axis lines=left, axis line style={grd,line width=0.5pt},
+    tick style={grd}, ticklabel style={font=\scriptsize,text=grd},
+    xtick={-4,-2.2,0,2.2,4}, xticklabels={$-4$,$-2.2$,$0$,$2.2$,$4$},
+    ytick={0,1,2},
+    xlabel={$x$}, xlabel style={font=\scriptsize,text=grd,at={(axis description cs:0.5,-0.13)}},
+    clip=false]
+    \fill[grl] (axis cs:-2.2,-1.0) rectangle (axis cs:2.2,2.0);
+    \draw[grd!60,line width=0.3pt] (axis cs:-4,0) -- (axis cs:4,0);
+    \foreach \j in {0,...,7} {\addplot[acc!55,line width=0.4pt] coordinates {\csname bcoords\j\endcsname};}
+    \addplot[grd,line width=0.8pt,dash pattern=on 2.5pt off 1.5pt] coordinates {\basecoords};
+    \addplot[ora,line width=1.1pt] coordinates {\phicoords};
+    \node[font=\scriptsize,text=grd,align=center] at (axis cs:0,1.82) {spline grid};
+    \node[font=\scriptsize,text=acc,anchor=west] at (axis cs:2.25,-0.72) {$B_{j,3}$};
+    \node[font=\scriptsize,text=ora,anchor=south east] at (axis cs:-0.15,0.85) {$\phi_{o,i}$};
+    \node[font=\scriptsize,text=grd,anchor=north west,align=left] at (axis cs:2.3,0.62) {outside grid:\\base term only};
+  \end{axis}
+\end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,25 @@
+dataset,backbone,comparison,diff,ci_lo,ci_hi,p,hedges_g,p_holm
+CIFAR10,resnet50,mlp - kan,1.257,0.813,1.701,0.001,4.062,0.012
+CIFAR10,resnet50,linear - kan,1.126,0.934,1.318,0.0,8.883,0.001
+CIFAR10,resnet50,mlp - linear,0.131,-0.318,0.58,0.466,0.458,1.0
+CIFAR10,vit_b_16,mlp - kan,0.644,0.515,0.772,0.0,6.701,0.0
+CIFAR10,vit_b_16,linear - kan,0.657,0.528,0.786,0.0,6.763,0.0
+CIFAR10,vit_b_16,mlp - linear,-0.013,-0.123,0.096,0.785,-0.161,1.0
+EuroSAT,resnet50,mlp - kan,0.304,-0.027,0.634,0.066,1.258,0.926
+EuroSAT,resnet50,linear - kan,0.205,-0.001,0.411,0.051,1.335,0.76
+EuroSAT,resnet50,mlp - linear,0.099,-0.225,0.422,0.476,0.437,1.0
+EuroSAT,vit_b_16,mlp - kan,0.915,0.536,1.295,0.001,3.314,0.017
+EuroSAT,vit_b_16,linear - kan,0.867,0.495,1.238,0.002,3.405,0.032
+EuroSAT,vit_b_16,mlp - linear,0.049,-0.176,0.274,0.622,0.295,1.0
+ISIC2019,resnet50,mlp - kan,0.546,-0.848,1.939,0.381,0.537,1.0
+ISIC2019,resnet50,linear - kan,0.848,-1.453,3.15,0.386,0.542,1.0
+ISIC2019,resnet50,mlp - linear,-0.303,-2.657,2.051,0.767,-0.177,1.0
+ISIC2019,vit_b_16,mlp - kan,2.818,1.735,3.901,0.001,3.557,0.011
+ISIC2019,vit_b_16,linear - kan,0.022,-1.423,1.467,0.971,0.022,1.0
+ISIC2019,vit_b_16,mlp - linear,2.796,1.263,4.33,0.003,2.441,0.056
+MNIST,resnet50,mlp - kan,0.198,-0.03,0.425,0.076,1.252,0.994
+MNIST,resnet50,linear - kan,0.272,0.125,0.419,0.003,2.5,0.056
+MNIST,resnet50,mlp - linear,-0.075,-0.309,0.159,0.473,-0.435,1.0
+MNIST,vit_b_16,mlp - kan,0.041,-0.047,0.129,0.315,0.615,1.0
+MNIST,vit_b_16,linear - kan,0.11,-0.139,0.359,0.304,0.656,1.0
+MNIST,vit_b_16,mlp - linear,-0.069,-0.319,0.181,0.499,-0.419,1.0

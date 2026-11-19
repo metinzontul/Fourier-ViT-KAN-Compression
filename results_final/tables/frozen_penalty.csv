@@ -1,0 +1,13 @@
+backbone,reducer,MNIST,CIFAR10,EuroSAT,ISIC2019
+resnet50,bct,-3.62,-4.97,-4.24,-8.7
+resnet50,bct_perm,-3.5,-5.27,-3.65,-8.1
+resnet50,blockcirc,-0.6,-1.84,-0.81,-4.37
+resnet50,linear,0.18,0.58,0.46,0.05
+resnet50,pca,-1.62,-2.59,-1.74,-5.3
+resnet50,random,-2.85,-4.73,-2.87,-6.27
+vit_b_16,bct,-1.82,-3.1,-5.8,-8.91
+vit_b_16,bct_perm,-1.62,-3.21,-5.35,-9.43
+vit_b_16,blockcirc,-0.52,-1.44,-1.69,-4.44
+vit_b_16,linear,0.26,0.39,0.61,1.68
+vit_b_16,pca,-0.82,-0.95,-1.61,-6.05
+vit_b_16,random,-1.27,-2.8,-4.27,-9.46

@@ -1,0 +1,129 @@
+hypothesis,dataset,backbone,head,diff,ci_lo,ci_hi,p,hedges_g,p_holm
+H1 BCT - random,MNIST,vit_b_16,linear,-0.3273,-0.4464,-0.2083,0.0002,-3.6229,0.0047
+H1 BCT - random,MNIST,vit_b_16,mlp,-0.2713,-0.3833,-0.1593,0.0005,-3.1915,0.0098
+H1 BCT - random,MNIST,vit_b_16,kan,-1.2343,-1.5492,-0.9194,0.0,-5.1657,0.0005
+H1 BCT - random,MNIST,vit_b_16,kan_ln,-0.3317,-0.5555,-0.1078,0.0104,-2.0315,0.1771
+H1 BCT - random,MNIST,resnet50,linear,-0.3355,-0.6535,-0.0175,0.0416,-1.4628,0.557
+H1 BCT - random,MNIST,resnet50,mlp,-0.3209,-0.7054,0.0637,0.0905,-1.0996,0.9958
+H1 BCT - random,MNIST,resnet50,kan,-1.9755,-2.4406,-1.5104,0.0001,-6.318,0.0034
+H1 BCT - random,MNIST,resnet50,kan_ln,-0.4532,-0.7573,-0.1492,0.0112,-2.1133,0.1787
+H1 BCT - random,CIFAR10,vit_b_16,linear,0.0914,-0.2162,0.399,0.5033,0.4035,1.0
+H1 BCT - random,CIFAR10,vit_b_16,mlp,-0.2214,-0.5263,0.0836,0.1323,-0.9594,1.0
+H1 BCT - random,CIFAR10,vit_b_16,kan,-1.0009,-1.389,-0.6128,0.0004,-3.4245,0.0078
+H1 BCT - random,CIFAR10,vit_b_16,kan_ln,-0.0467,-0.3201,0.2267,0.7036,-0.2254,1.0
+H1 BCT - random,CIFAR10,resnet50,linear,1.1062,0.7411,1.4712,0.0002,4.1209,0.0045
+H1 BCT - random,CIFAR10,resnet50,mlp,0.2644,-0.1505,0.6792,0.1781,0.848,1.0
+H1 BCT - random,CIFAR10,resnet50,kan,-2.1834,-2.6981,-1.6687,0.0,-5.6871,0.0005
+H1 BCT - random,CIFAR10,resnet50,kan_ln,-0.1258,-0.4435,0.1919,0.3409,-0.6115,1.0
+H1 BCT - random,EuroSAT,vit_b_16,linear,-0.8482,-1.0432,-0.6531,0.0,-5.7289,0.0003
+H1 BCT - random,EuroSAT,vit_b_16,mlp,-0.7147,-0.9608,-0.4687,0.0002,-3.8293,0.0036
+H1 BCT - random,EuroSAT,vit_b_16,kan,-3.2969,-3.8659,-2.7279,0.0,-8.7437,0.0011
+H1 BCT - random,EuroSAT,vit_b_16,kan_ln,-1.2334,-1.641,-0.8257,0.0001,-4.023,0.0034
+H1 BCT - random,EuroSAT,resnet50,linear,-0.5976,-0.8897,-0.3054,0.0024,-2.8476,0.0427
+H1 BCT - random,EuroSAT,resnet50,mlp,0.0042,-0.3325,0.3409,0.9775,0.0167,1.0
+H1 BCT - random,EuroSAT,resnet50,kan,-4.1507,-4.4807,-3.8206,0.0,-17.6295,0.0
+H1 BCT - random,EuroSAT,resnet50,kan_ln,-0.7539,-0.9432,-0.5646,0.0,-5.3818,0.0009
+H1 BCT - random,ISIC2019,vit_b_16,linear,2.2632,0.6491,3.8772,0.0134,1.929,0.2016
+H1 BCT - random,ISIC2019,vit_b_16,mlp,-0.6014,-2.7062,1.5034,0.503,-0.4096,1.0
+H1 BCT - random,ISIC2019,vit_b_16,kan,-0.9798,-2.6714,0.7118,0.2093,-0.7972,1.0
+H1 BCT - random,ISIC2019,vit_b_16,kan_ln,1.5221,-0.7937,3.838,0.1458,1.0116,1.0
+H1 BCT - random,ISIC2019,resnet50,linear,-1.2837,-3.1581,0.5908,0.1528,-0.9033,1.0
+H1 BCT - random,ISIC2019,resnet50,mlp,-2.1796,-4.2213,-0.1379,0.0398,-1.4667,0.557
+H1 BCT - random,ISIC2019,resnet50,kan,-4.9655,-6.4002,-3.5309,0.0001,-4.8013,0.0034
+H1 BCT - random,ISIC2019,resnet50,kan_ln,-1.2798,-2.5249,-0.0347,0.0452,-1.3542,0.557
+"H2b BCT - BCT(permuted), TOST +/-0.5",MNIST,vit_b_16,linear,-0.1052,,,0.0041,,0.1242
+"H2b BCT - BCT(permuted), TOST +/-0.5",MNIST,vit_b_16,mlp,-0.2407,,,0.0334,,0.8002
+"H2b BCT - BCT(permuted), TOST +/-0.5",MNIST,vit_b_16,kan,-0.2535,,,0.0333,,0.8002
+"H2b BCT - BCT(permuted), TOST +/-0.5",MNIST,vit_b_16,kan_ln,-0.1838,,,0.0005,,0.0149
+"H2b BCT - BCT(permuted), TOST +/-0.5",MNIST,resnet50,linear,-0.2248,,,0.0264,,0.6604
+"H2b BCT - BCT(permuted), TOST +/-0.5",MNIST,resnet50,mlp,-0.2901,,,0.142,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",MNIST,resnet50,kan,-0.0244,,,0.0415,,0.9141
+"H2b BCT - BCT(permuted), TOST +/-0.5",MNIST,resnet50,kan_ln,0.0613,,,0.0065,,0.1879
+"H2b BCT - BCT(permuted), TOST +/-0.5",CIFAR10,vit_b_16,linear,0.1559,,,0.0156,,0.4213
+"H2b BCT - BCT(permuted), TOST +/-0.5",CIFAR10,vit_b_16,mlp,0.1019,,,0.0036,,0.1118
+"H2b BCT - BCT(permuted), TOST +/-0.5",CIFAR10,vit_b_16,kan,0.0487,,,0.013,,0.3644
+"H2b BCT - BCT(permuted), TOST +/-0.5",CIFAR10,vit_b_16,kan_ln,0.1386,,,0.0213,,0.5546
+"H2b BCT - BCT(permuted), TOST +/-0.5",CIFAR10,resnet50,linear,0.709,,,0.9459,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",CIFAR10,resnet50,mlp,0.3344,,,0.1586,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",CIFAR10,resnet50,kan,-0.0282,,,0.0802,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",CIFAR10,resnet50,kan_ln,0.2124,,,0.0958,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",EuroSAT,vit_b_16,linear,-0.5731,,,0.6062,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",EuroSAT,vit_b_16,mlp,-0.304,,,0.1419,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",EuroSAT,vit_b_16,kan,-0.5776,,,0.5825,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",EuroSAT,vit_b_16,kan_ln,-0.346,,,0.3008,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",EuroSAT,resnet50,linear,-0.3933,,,0.2585,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",EuroSAT,resnet50,mlp,-0.4687,,,0.4213,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",EuroSAT,resnet50,kan,-1.1448,,,0.9898,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",EuroSAT,resnet50,kan_ln,-0.3394,,,0.2931,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",ISIC2019,vit_b_16,linear,1.3765,,,0.8577,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",ISIC2019,vit_b_16,mlp,-0.778,,,0.6729,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",ISIC2019,vit_b_16,kan,1.1953,,,0.7888,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",ISIC2019,vit_b_16,kan_ln,0.2629,,,0.2758,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",ISIC2019,resnet50,linear,-1.1872,,,0.7974,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",ISIC2019,resnet50,mlp,-1.1173,,,0.6886,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",ISIC2019,resnet50,kan,-0.0191,,,0.235,,1.0
+"H2b BCT - BCT(permuted), TOST +/-0.5",ISIC2019,resnet50,kan_ln,-0.0554,,,0.2707,,1.0
+H3 interaction (KAN drop - Linear drop),MNIST,vit_b_16,bct,0.7504,0.4318,1.0689,0.0004,,0.0075
+H3 interaction (KAN drop - Linear drop),MNIST,vit_b_16,blockcirc,0.3703,0.0477,0.6928,0.0277,,0.333
+H3 interaction (KAN drop - Linear drop),MNIST,vit_b_16,pca,0.8854,0.637,1.1337,0.0001,,0.0028
+H3 interaction (KAN drop - Linear drop),MNIST,vit_b_16,random,-0.1566,-0.4664,0.1532,0.2866,,1.0
+H3 interaction (KAN drop - Linear drop),MNIST,resnet50,bct,0.5408,0.0761,1.0054,0.029,,0.333
+H3 interaction (KAN drop - Linear drop),MNIST,resnet50,blockcirc,0.2667,0.0429,0.4905,0.0232,,0.3249
+H3 interaction (KAN drop - Linear drop),MNIST,resnet50,pca,0.5149,0.3429,0.687,0.0,,0.0004
+H3 interaction (KAN drop - Linear drop),MNIST,resnet50,random,-1.0993,-1.4229,-0.7757,0.0,,0.001
+H3 interaction (KAN drop - Linear drop),CIFAR10,vit_b_16,bct,0.9538,0.5887,1.319,0.0003,,0.0066
+H3 interaction (KAN drop - Linear drop),CIFAR10,vit_b_16,blockcirc,0.756,0.4837,1.0283,0.0001,,0.0015
+H3 interaction (KAN drop - Linear drop),CIFAR10,vit_b_16,pca,0.4842,0.34,0.6284,0.0,,0.0003
+H3 interaction (KAN drop - Linear drop),CIFAR10,vit_b_16,random,-0.1385,-0.4963,0.2194,0.4091,,1.0
+H3 interaction (KAN drop - Linear drop),CIFAR10,resnet50,bct,1.5392,1.0467,2.0316,0.0001,,0.003
+H3 interaction (KAN drop - Linear drop),CIFAR10,resnet50,blockcirc,0.7135,0.2512,1.1758,0.0064,,0.1084
+H3 interaction (KAN drop - Linear drop),CIFAR10,resnet50,pca,2.0105,1.7714,2.2496,0.0,,0.0
+H3 interaction (KAN drop - Linear drop),CIFAR10,resnet50,random,-1.7504,-2.1858,-1.315,0.0,,0.0001
+H3 interaction (KAN drop - Linear drop),EuroSAT,vit_b_16,bct,2.1718,1.5742,2.7694,0.0,,0.0007
+H3 interaction (KAN drop - Linear drop),EuroSAT,vit_b_16,blockcirc,0.7733,0.1281,1.4184,0.024,,0.3249
+H3 interaction (KAN drop - Linear drop),EuroSAT,vit_b_16,pca,2.1491,1.7765,2.5217,0.0,,0.0001
+H3 interaction (KAN drop - Linear drop),EuroSAT,vit_b_16,random,-0.2769,-0.6593,0.1055,0.1343,,0.9398
+H3 interaction (KAN drop - Linear drop),EuroSAT,resnet50,bct,3.1347,2.7815,3.4878,0.0,,0.0
+H3 interaction (KAN drop - Linear drop),EuroSAT,resnet50,blockcirc,0.4926,0.0231,0.9621,0.0419,,0.4189
+H3 interaction (KAN drop - Linear drop),EuroSAT,resnet50,pca,3.0971,2.8726,3.3216,0.0,,0.0
+H3 interaction (KAN drop - Linear drop),EuroSAT,resnet50,random,-0.4184,-0.7463,-0.0906,0.0166,,0.2497
+H3 interaction (KAN drop - Linear drop),ISIC2019,vit_b_16,bct,3.9884,1.7874,6.1895,0.0018,,0.0317
+H3 interaction (KAN drop - Linear drop),ISIC2019,vit_b_16,blockcirc,1.0228,-1.7829,3.8286,0.4341,,1.0
+H3 interaction (KAN drop - Linear drop),ISIC2019,vit_b_16,pca,2.582,0.7678,4.3961,0.0101,,0.1616
+H3 interaction (KAN drop - Linear drop),ISIC2019,vit_b_16,random,0.7455,-0.9023,2.3934,0.3437,,1.0
+H3 interaction (KAN drop - Linear drop),ISIC2019,resnet50,bct,2.5356,-0.0372,5.1084,0.0529,,0.4757
+H3 interaction (KAN drop - Linear drop),ISIC2019,resnet50,blockcirc,2.1442,-0.5843,4.8728,0.1098,,0.8783
+H3 interaction (KAN drop - Linear drop),ISIC2019,resnet50,pca,0.2817,-2.0412,2.6046,0.7817,,1.0
+H3 interaction (KAN drop - Linear drop),ISIC2019,resnet50,random,-1.1462,-3.6445,1.352,0.3284,,1.0
+H4 KAN+LN - KAN,MNIST,vit_b_16,bct,0.5124,0.24,0.7847,0.0039,2.6567,0.078
+H4 KAN+LN - KAN,MNIST,vit_b_16,blockcirc,0.2237,-0.0199,0.4673,0.0652,1.3137,0.5219
+H4 KAN+LN - KAN,MNIST,vit_b_16,pca,0.229,0.1487,0.3093,0.0004,3.9752,0.0117
+H4 KAN+LN - KAN,MNIST,vit_b_16,random,-0.3903,-0.6757,-0.1049,0.0137,-1.8088,0.1915
+H4 KAN+LN - KAN,MNIST,resnet50,bct,0.9995,0.5172,1.4819,0.0018,2.8094,0.0415
+H4 KAN+LN - KAN,MNIST,resnet50,blockcirc,-0.0469,-0.2862,0.1924,0.663,-0.2585,0.8482
+H4 KAN+LN - KAN,MNIST,resnet50,pca,-0.2204,-0.3164,-0.1244,0.0022,-3.4342,0.0492
+H4 KAN+LN - KAN,MNIST,resnet50,random,-0.5227,-0.6955,-0.35,0.0001,-3.9877,0.0034
+H4 KAN+LN - KAN,CIFAR10,vit_b_16,bct,0.7321,0.3609,1.1033,0.0023,2.6622,0.0492
+H4 KAN+LN - KAN,CIFAR10,vit_b_16,blockcirc,0.257,0.0317,0.4824,0.0303,1.5115,0.3638
+H4 KAN+LN - KAN,CIFAR10,vit_b_16,pca,0.3696,0.2323,0.5068,0.0014,4.1481,0.0339
+H4 KAN+LN - KAN,CIFAR10,vit_b_16,random,-0.2221,-0.5284,0.0843,0.1316,-0.9674,0.6467
+H4 KAN+LN - KAN,CIFAR10,resnet50,bct,1.4405,0.9486,1.9325,0.0011,4.5902,0.0286
+H4 KAN+LN - KAN,CIFAR10,resnet50,blockcirc,0.2127,-0.3777,0.803,0.4241,0.484,0.8482
+H4 KAN+LN - KAN,CIFAR10,resnet50,pca,1.6414,1.4658,1.817,0.0,12.5104,0.0
+H4 KAN+LN - KAN,CIFAR10,resnet50,random,-0.617,-1.0157,-0.2184,0.0074,-2.0428,0.1251
+H4 KAN+LN - KAN,EuroSAT,vit_b_16,bct,1.4404,0.8673,2.0135,0.0008,3.5085,0.0217
+H4 KAN+LN - KAN,EuroSAT,vit_b_16,blockcirc,0.7042,0.0908,1.3175,0.0309,1.6159,0.3638
+H4 KAN+LN - KAN,EuroSAT,vit_b_16,pca,0.6475,0.1977,1.0973,0.0145,2.1521,0.1915
+H4 KAN+LN - KAN,EuroSAT,vit_b_16,random,-0.6231,-0.9982,-0.248,0.0075,-2.3964,0.1251
+H4 KAN+LN - KAN,EuroSAT,resnet50,bct,1.9724,1.645,2.2997,0.0,8.8051,0.0006
+H4 KAN+LN - KAN,EuroSAT,resnet50,blockcirc,0.3718,-0.0871,0.8306,0.0924,1.1762,0.6467
+H4 KAN+LN - KAN,EuroSAT,resnet50,pca,0.3457,0.1975,0.4939,0.0007,3.073,0.0179
+H4 KAN+LN - KAN,EuroSAT,resnet50,random,-1.4244,-1.6324,-1.2163,0.0,-9.0309,0.0
+H4 KAN+LN - KAN,ISIC2019,vit_b_16,bct,1.2723,-0.39,2.9345,0.1045,1.151,0.6467
+H4 KAN+LN - KAN,ISIC2019,vit_b_16,blockcirc,2.8058,1.2188,4.3928,0.0044,2.4189,0.0843
+H4 KAN+LN - KAN,ISIC2019,vit_b_16,pca,2.4617,0.8933,4.03,0.0078,2.1399,0.1251
+H4 KAN+LN - KAN,ISIC2019,vit_b_16,random,-1.2296,-3.5298,1.0705,0.2321,-0.7696,0.6963
+H4 KAN+LN - KAN,ISIC2019,resnet50,bct,2.4005,0.8985,3.9025,0.0067,2.1412,0.1199
+H4 KAN+LN - KAN,ISIC2019,resnet50,blockcirc,2.359,0.1706,4.5474,0.0389,1.5305,0.3638
+H4 KAN+LN - KAN,ISIC2019,resnet50,pca,0.8903,-0.2311,2.0117,0.1037,1.0572,0.6467
+H4 KAN+LN - KAN,ISIC2019,resnet50,random,-1.2852,-2.4098,-0.1607,0.0303,-1.5299,0.3638
