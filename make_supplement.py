@@ -59,6 +59,19 @@ def pval(p):
     return "$<$0.001" if p < 0.001 else f"{p:.3f}"
 
 
+def small(x, nd=3):
+    """Format a non-negative share; values that round to zero are shown as <0.001 (or the matching bound)."""
+    if 0 < x < 0.5 * 10 ** (-nd):
+        return "$<$0." + "0" * (nd - 1) + "1"
+    return f"{x:.{nd}f}"
+
+
+def iqr(x):
+    """Latency IQR with one decimal; a value that rounds to 0.0 (IQR < 0.05 ms) is shown as <0.1."""
+    s = f"{x:.1f}"
+    return "$<$0.1" if s == "0.0" else s
+
+
 def longtable(caption, label, cols, header, rows, size=r"\footnotesize", note=None):
     n = len(cols)
     out = [size, r"\setlength{\tabcolsep}{3pt}",
@@ -102,7 +115,7 @@ def s2():
         for ds in DS:
             r = d[(d.dataset == ds) & (d.backbone == bb)].iloc[0]
             rows.append(f"{BB[bb]} & {DSN[ds]} & {r.participation_ratio:.1f} & {int(r.pca_dim_95)} & {r.pca128_var:.3f} & "
-                        f"{r.imbalance_ratio:.1f} & {r.dc_energy:.3f} & {r.perm_ac_observed:.4f} & {r.perm_ac_null_mean:.4f} & "
+                        f"{r.imbalance_ratio:.1f} & {small(r.dc_energy)} & {r.perm_ac_observed:.4f} & {r.perm_ac_null_mean:.4f} & "
                         f"{num(r.perm_ac_z)} & {r.perm_ac_p:.3f}" + r" \\")
         rows.append(r"\midrule")
     rows = rows[:-1]
@@ -312,7 +325,7 @@ def s11():
         fl = r["Module share of FLOPs (%)"]
         rows.append(f"{r.Backbone} & {red} & {r.Head} & {int(r['Module params']):,} & "
                     f"{r['Module share of params (%)']:.3f} & {r['Module FLOPs (k)']:.1f} & {'$<$0.0001' if fl < 0.0001 else f'{fl:.4f}'} & "
-                    f"{r['Module CPU-1T b1 (ms)']:.3f} & {r['Model GPU b64 (ms)']:.1f} ({r['Model GPU b64 IQR']:.1f}) & "
+                    f"{r['Module CPU-1T b1 (ms)']:.3f} & {r['Model GPU b64 (ms)']:.1f} ({iqr(r['Model GPU b64 IQR'])}) & "
                     f"{r['Peak memory b64 (MiB)']:.0f}" + r" \\")
     note = ("CPU: module alone, one thread, batch 1; Model: whole model on the GPU, batch 64. Block-circ., block-circulant; Learned lin., learned linear. Shares are relative to the whole model (ViT-B/16: 85.80 M parameters, 35.13 GFLOPs; ResNet50: 23.51 M, 8.17 GFLOPs); fixed PCA and random projection matrices are not trainable and are not counted as "
             "parameters, but their operations are counted as FLOPs. Latency: median of 100 iterations after 20 warm-up iterations, fp32; "
