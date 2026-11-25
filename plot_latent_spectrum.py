@@ -55,11 +55,11 @@ def main():
             ax.plot(s.freq, c, color=ORIG, lw=1.0, zorder=3)
             ax.set_xlim(0, 0.5)
             ax.set_ylim(0, 1)
-            ax.set_xticks([0, 0.25, 0.5], ["0", ".25", ".5"])
-            ax.set_yticks([0, 0.5, 1], ["0", ".5", "1"])
+            ax.set_xticks([0, 0.25, 0.5], ["0", "0.25", "0.5"])
+            ax.set_yticks([0, 0.5, 1], ["0", "0.5", "1"])
             ax.spines[["top", "right"]].set_visible(False)
             r = de.loc[(ds, bb)]
-            txt = f"z = {r.perm_ac_z:+.2f}\np = {r.perm_ac_p:.2f}"
+            txt = f"z = {r.perm_ac_z:+.2f}".replace("-", "\u2212") + f"\np = {r.perm_ac_p:.2f}"
             if bb == "resnet50":
                 txt += f"\nDC {r.dc_energy:.2f}"
             ax.text(0.05, 0.96, txt, transform=ax.transAxes, ha="left", va="top", fontsize=6.5, color=INK,
